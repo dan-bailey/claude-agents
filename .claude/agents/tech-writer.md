@@ -1,7 +1,7 @@
 ---
 name: tech-writer
 description: Use for writing or updating API documentation, README files, changelogs, inline code documentation, user guides, onboarding docs, and OpenAPI/Swagger specs. Also use to audit existing documentation for accuracy, completeness, and clarity.
-model: claude-sonnet-4-6
+model: haiku
 tools:
   - Read
   - Write

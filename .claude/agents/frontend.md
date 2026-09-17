@@ -1,7 +1,7 @@
 ---
 name: frontend
 description: Use for building UI components, implementing designs in code, managing client-side state, handling browser APIs, CSS/styling work, responsive layouts, and framework-specific frontend tasks (React, Vue, Svelte, etc.). Also handles frontend build tooling like Vite, webpack, and bundler configuration.
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write

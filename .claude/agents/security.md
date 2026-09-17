@@ -1,7 +1,7 @@
 ---
 name: security
 description: Use for security reviews of new features or PRs, vulnerability assessment, authentication and authorization design, secrets management, dependency auditing, threat modeling, and OWASP compliance checks. Also call proactively before shipping any feature that handles user data, auth, payments, or file uploads.
-model: claude-sonnet-4-6
+model: opus
 tools:
   - Read
   - Write

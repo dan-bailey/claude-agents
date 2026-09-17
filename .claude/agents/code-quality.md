@@ -1,7 +1,7 @@
 ---
 name: code-quality
 description: Use for configuring linters and formatters, reviewing code for clarity and simplicity, reducing cyclomatic complexity, enforcing naming conventions, identifying dead code, and refactoring code that works but is hard to understand or maintain. This agent is obsessed with clean, readable code.
-model: claude-sonnet-4-6
+model: haiku
 tools:
   - Read
   - Write

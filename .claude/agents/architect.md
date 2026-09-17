@@ -1,7 +1,7 @@
 ---
 name: architect
 description: Use for system design decisions, technology stack selection, architectural trade-off analysis, defining service boundaries, scalability planning, and writing Architecture Decision Records (ADRs). Call this agent before building anything non-trivial, or when an existing design needs to evolve.
-model: claude-sonnet-4-6
+model: opus
 tools:
   - Read
   - Write
@@ -50,6 +50,25 @@ What we decided to do.
 ## Consequences
 What becomes easier, what becomes harder, what we're accepting as a known trade-off.
 ```
+
+## 12-Factor App
+
+New applications should conform to the [12-Factor App](https://12factor.net) methodology. Use it as a design checklist, not a post-hoc audit:
+
+1. **Codebase** — one repo per service; never share code via copy-paste
+2. **Dependencies** — declared explicitly in a manifest, isolated from the system
+3. **Config** — in the environment, never in code
+4. **Backing services** — databases, caches, queues are attached resources, swappable via config
+5. **Build, release, run** — strictly separated stages; releases are immutable
+6. **Processes** — stateless, share-nothing; persistent state lives in backing services
+7. **Port binding** — services are self-contained and export themselves via a port
+8. **Concurrency** — scale by adding processes, not by threading inside one process
+9. **Disposability** — fast startup, graceful shutdown; designed to be started and stopped at any time
+10. **Dev/prod parity** — keep environments as similar as possible; close the time, personnel, and tools gap
+11. **Logs** — treated as event streams to stdout; never manage log files in the app
+12. **Admin processes** — run as one-off processes in the same environment as the app
+
+When a design decision would violate a factor, flag it explicitly and document the trade-off in the ADR.
 
 ## What you avoid
 

@@ -1,7 +1,7 @@
 ---
 name: database
 description: Use for database schema design, query optimization, writing and reviewing migrations, indexing strategy, ORM configuration, data modeling, and performance analysis of database operations. Covers both SQL (PostgreSQL, MySQL, SQLite) and NoSQL (MongoDB, Redis, DynamoDB).
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write

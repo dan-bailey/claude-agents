@@ -1,7 +1,7 @@
 ---
 name: ios
 description: Use for iOS app development tasks: Swift and SwiftUI code, UIKit work, Xcode project configuration, App Store submission, iOS SDK integration (Core Data, CloudKit, Push Notifications, HealthKit, etc.), TestFlight setup, and iOS-specific performance or debugging. Also handles iOS accessibility (VoiceOver, Dynamic Type) and platform-specific security (Keychain, App Transport Security).
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write

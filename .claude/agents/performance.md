@@ -1,7 +1,7 @@
 ---
 name: performance
 description: Use for diagnosing and fixing performance issues, Core Web Vitals optimization, JavaScript bundle analysis, server response time improvements, caching strategy, database query profiling, load testing, and preventing performance regressions. Call this agent when something is slow or before shipping a feature that will be on a critical path.
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write

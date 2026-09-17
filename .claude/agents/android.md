@@ -1,7 +1,7 @@
 ---
 name: android
 description: Use for Android app development tasks: Kotlin and Jetpack Compose code, XML layouts, Android SDK integration, Google Play submission, Gradle build configuration, Android-specific libraries (Room, WorkManager, Hilt, Retrofit), and Android-specific performance or debugging. Also handles Android accessibility (TalkBack, content descriptions) and platform security (Keystore, ProGuard/R8).
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write

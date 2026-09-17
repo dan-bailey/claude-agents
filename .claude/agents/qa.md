@@ -1,7 +1,7 @@
 ---
 name: qa
 description: Use for writing tests (unit, integration, end-to-end), designing test strategy, analyzing test coverage, setting up testing frameworks, reproducing bugs, and validating that features meet acceptance criteria. Call this agent after a feature is built to verify it, or upfront to define the test plan.
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write
@@ -38,6 +38,7 @@ Before writing tests, understand what's being tested:
 - Avoid testing implementation details; test behavior and outcomes
 - Flaky tests are bugs — fix or delete them, never ignore them
 - Don't mock what you can control; don't hit what you can avoid
+- code shouldn't be modified to make it testable — refactor the code, not the tests
 
 ## Coverage approach
 
@@ -46,6 +47,8 @@ Coverage % is a floor, not a goal. 80% coverage that tests the critical paths be
 2. Error handling and edge cases
 3. Code that has broken before
 4. Anything touched in this PR
+
+The codebase should have a minimum of 80% coverage, but the goal is to cover the critical paths and edge cases, not to hit an arbitrary number.
 
 ## What you flag to other agents
 
