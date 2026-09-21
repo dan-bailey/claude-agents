@@ -1,6 +1,43 @@
 # claude-agents
 
-A team of 15 specialized Claude Code agents for full-stack web and mobile development. Each agent has a defined domain, clear delegation rules, and knows which other agents to hand off to — so you can work at the level you want and let the right specialist handle the rest.
+A team of 16 specialized Claude Code agents for full-stack web and mobile development. Each agent has a defined domain, clear delegation rules, and knows which other agents to hand off to — so you can work at the level you want and let the right specialist handle the rest.
+
+---
+
+## Installation
+
+Clone this repo and copy (or symlink) the agent files into your Claude Code agents directory.
+
+### Option 1 — Copy agents into a project
+
+Place the agents in a `.claude/agents/` directory at your project root. They'll be available only in that project.
+
+```bash
+git clone https://github.com/your-org/claude-agents.git
+cp claude-agents/.claude/agents/*.md your-project/.claude/agents/
+```
+
+### Option 2 — Install globally for all projects
+
+Copy the agents into your global Claude Code config directory so they're available in every project.
+
+```bash
+git clone https://github.com/your-org/claude-agents.git
+mkdir -p ~/.claude/agents
+cp claude-agents/.claude/agents/*.md ~/.claude/agents/
+```
+
+### Option 3 — Symlink for live updates
+
+If you want the agents to stay in sync with this repo as it's updated:
+
+```bash
+git clone https://github.com/your-org/claude-agents.git
+mkdir -p ~/.claude/agents
+ln -s "$(pwd)/claude-agents/.claude/agents/"*.md ~/.claude/agents/
+```
+
+After installation, restart Claude Code or open a new session. Agents are available immediately via `@agent-name` in any prompt.
 
 ---
 
@@ -31,6 +68,10 @@ flowchart TD
         A11Y[a11y]
         PERF[performance]
         TW[tech-writer]
+    end
+
+    subgraph ADVERSARIAL ["Adversarial"]
+        RT[red-team]
     end
 
     ARCH --> LEAD
@@ -66,6 +107,9 @@ flowchart TD
     PERF -.-> DB
     TW -.-> API
     TW -.-> LEAD
+
+    RT -.-> ARCH
+    RT -.-> LEAD
 ```
 
 **Solid arrows** — primary delegation and handoff paths.
@@ -86,6 +130,7 @@ flowchart TD
 | Agent | Description |
 |---|---|
 | `architect` | System-level design: service boundaries, data flow, technology selection, scalability planning, and Architecture Decision Records (ADRs). Call before building anything non-trivial. |
+| `red-team` | Adversarial review of decisions, plans, and proposals. Challenges assumptions, surfaces second-order effects, and asks whether the team is solving the right problem. Invoke on ADRs, specs, or any decision before it hardens. |
 
 ### Core Implementation
 
@@ -130,3 +175,15 @@ Invoke any agent by name in your prompt:
 ```
 
 Or describe what you need without naming an agent — `@lead-fullstack` will assess the task and delegate to the right specialist automatically.
+
+### Red team workflow
+
+The `red-team` agent is invoked deliberately, not automatically. Point it at an artifact before the team commits to it:
+
+```
+@red-team review this ADR before we finalize it
+@red-team challenge our approach to multi-tenancy in architect.md
+@red-team we're planning to rewrite the auth layer — is that the right call?
+```
+
+The red team produces a structured challenge report with a verdict: **Proceed**, **Proceed with changes**, or **Pause and revisit**. Findings are handed back to the relevant specialist (usually `architect` or `lead-fullstack`) to address before moving forward.
